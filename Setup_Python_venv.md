@@ -1,10 +1,14 @@
-1. create folder for venv
-2. create venv
-    python -m venv projectname
-3. activate it 
-    .\Scripts\activate
-4. Now, from inside the environment install ipykernel using pip:
-    pip install ipykernel
-5. And now install a new kernel:
-    ipython kernel install --user --name=projectname
+1. Install mamba via .exe
+2. create and activate a virtual mamba environment
+    mamba create -n mymambatry
+    mamba activate mymambatry
+4. Now, from inside the environment install all dependencies:
+mamba install -c fastchan fastai ipykernel numpy==1.23.5 pytorch torchvision torchaudio cudatoolkit pytorch-cuda=11.6 -c pytorch -c nvidia
+5. And now register a new kernel:
+    ipython kernel install --user --name=mymambatry
 At this point, you can start jupyter, create a new notebook and select the kernel that lives inside your environment.
+
+
+
+Watch the GPU usage:
+nvidia-smi --query-gpu=timestamp,pstate,temperature.gpu,utilization.gpu,utilization.memory,memory.total,memory.free,memory.used --format=csv -l 1
